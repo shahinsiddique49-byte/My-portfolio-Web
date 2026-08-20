@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biriyani Lover - Premium Biriyani Restaurant</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background 0.3s;
+        }
+
+        nav.scrolled {
+            background: #000;
+            padding: 0.5rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            color: #ff4444;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff4444;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://res.cloudinary.com/teepublic/image/private/s--jp-127Or--/t_Preview/t_watermark_lock/b_rgb:000000,c_lpad,f_jpg,h_630,q_90,w_1200/v1739949009/production/designs/72492189_0.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .hero-content p {
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff4444;
+            color: white;
+            padding: 18px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            animation: fadeInUp 1s ease 0.4s both;
+            box-shadow: 0 5px 15px rgba(255,68,68,0.4);
+        }
+
+        .cta-button:hover {
+            background: #cc0000;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255,68,68,0.6);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #000;
+        }
+
+        h2 span {
+            color: #ff4444;
+        }
+
+        /* Menu Section */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            text-align: center;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .menu-image {
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .menu-item:hover .menu-image img {
+            transform: scale(1.1);
+        }
+
+        .menu-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .menu-content {
+            padding: 1.5rem;
+        }
+
+        .menu-item h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .menu-description {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff4444;
+            margin-bottom: 0.5rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            background: #f8f8f8;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .contact-info i {
+            font-size: 3rem;
+            color: #ff4444;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .map-placeholder {
+            height: 300px;
+            background: linear-gradient(45deg, #ff4444, #cc0000);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(0,0,0,0.98);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 2rem;
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            h2 {
+                font-size: 2.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">🍛 Biriyani Lover</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Biriyani Lover</h1>
+            <p>Heavenly Biriyani Experience • Authentic Flavors • Spice Perfection</p>
+            <a href="#menu" class="cta-button">Explore Our Biriyani Menu</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <h2>Our <span>Biriyani</span> Collection</h2>
+            <div class="menu-grid">
+                <!-- Chicken Biriyani 1 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://i.pinimg.com/originals/aa/a9/2a/aaa92a3c0a605671a2e1b20871913c34.jpg" alt="Chicken Biriyani" loading="lazy">
+                        <div class="menu-overlay">
+                            <h3>Chicken Biriyani</h3>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Chicken Biriyani</h3>
+                        <p class="menu-description">Tender chicken marinated overnight with yogurt & aromatic spices, layered with premium basmati rice</p>
+                        <div class="price">$16.99</div>
+                    </div>
+                </div>
+
+                <!-- Chicken Biriyani 2 -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://i.ytimg.com/vi/s4YsKuoYTe8/maxresdefault.jpg" alt="Chicken Biriyani" loading="lazy">
+                        <div class="menu-overlay">
+                            <h3>Chicken Biriyani</h3>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Chicken Biriyani Special</h3>
+                        <p class="menu-description">Dum cooked chicken biriyani with caramelized onions, mint & saffron</p>
+                        <div class="price">$18.99</div>
+                    </div>
+                </div>
+
+                <!-- Mutton Biriyani -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.4QTv4DUuDSjpQH9ZTpoE6wHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Mutton Biriyani" loading="lazy">
+                        <div class="menu-overlay">
+                            <h3>Mutton Biriyani</h3>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Mutton Biriyani</h3>
+                        <p class="menu-description">Juicy mutton pieces slow-cooked for 6 hours with saffron-infused basmati rice</p>
+                        <div class="price">$22.99</div>
+                    </div>
+                </div>
+
+                <!-- Veg Biriyani -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://th.bing.com/th/id/OIP.lZoLCVISmJZnyQvtWvClMQHaHa?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Veg Biriyani" loading="lazy">
+                        <div class="menu-overlay">
+                            <h3>Veg Biriyani</h3>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Veg Biriyani</h3>
+                        <p class="menu-description">Fresh seasonal vegetables, paneer, exotic nuts and dried fruits with aromatic spices</p>
+                        <div class="price">$14.99</div>
+                    </div>
+                </div>
+
+                <!-- Fish Biriyani -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://tse4.mm.bing.net/th/id/OIP.iVZw9a-rM331ThLJu3X1GwHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Fish Biriyani" loading="lazy">
+                        <div class="menu-overlay">
+                            <h3>Fish Biriyani</h3>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Fish Biriyani</h3>
+                        <p class="menu-description">Fresh kingfish marinated with coastal spices, layered with fragrant rice</p>
+                        <div class="price">$19.99</div>
+                    </div>
+                </div>
+
+                <!-- Prawn Biriyani -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://tse1.mm.bing.net/th/id/OIP.3B5S2ZNv_nJs-lT8nMxJkgHaFj?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Prawn Biriyani" loading="lazy">
+                        <div class="menu-overlay">
+                            <h3>Prawn Biriyani</h3>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Prawn Biriyani</h3>
+                        <p class="menu-description">Tiger prawns cooked with coconut and green masala, layered with basmati rice</p>
+                        <div class="price">$26.99</div>
+                    </div>
+                </div>
+
+                <!-- Hyderabadi Mutton Biriyani -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://thumbs.dreamstime.com/b/hyderabadi-cuisine-mutton-biryani-family-pack-es-un-delicioso-plato-de-arroz-salado-cargado-con-cebollas-caramelizadas-pollo-249455068.jpg" alt="Hyderabadi Mutton Biriyani" loading="lazy">
+                        <div class="menu-overlay">
+                            <h3>Hyderabadi Biriyani</h3>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Hyderabadi Mutton Biriyani</h3>
+                        <p class="menu-description">Authentic Nizami Kacchi Biriyani - Royal treatment with premium spices</p>
+                        <div class="price">$28.99</div>
+                    </div>
+                </div>
+
+                <!-- Egg Biriyani -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://i.pinimg.com/originals/aa/a9/2a/aaa92a3c0a605671a2e1b20871913c34.jpg" alt="Egg Biriyani" loading="lazy">
+                        <div class="menu-overlay">
+                            <h3>Egg Biriyani</h3>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Egg Biriyani</h3>
+                        <p class="menu-description">Spicy boiled eggs with caramelized onions and aromatic biriyani masala</p>
+                        <div class="price">$12.99</div>
+                    </div>
+                </div>
+
+                <!-- Family Pack -->
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://thumbs.dreamstime.com/b/hyderabadi-cuisine-mutton-biryani-family-pack-es-un-delicioso-plato-de-arroz-salado-cargado-con-cebollas-caramelizadas-pollo-249455068.jpg" alt="Family Biriyani Pack" loading="lazy">
+                        <div class="menu-overlay">
+                            <h3>Family Pack</h3>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <h3>Family Biriyani Pack</h3>
+                        <p class="menu-description">Serves 4-5 people. Choice of any biriyani + raita + salad + papad + gravy</p>
+                        <div class="price">$69.99</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>About <span>Biriyani Lover</span></h2>
+            <div class="about

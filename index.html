@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shahin Siddique | Software Engineer | Data Analyst | AI Enthusiast</title>
+  <meta name="description" content="Portfolio of Shahin Siddique — B.Tech Computer Science & Design graduate (2025). Aspiring Software Engineer, Data Analyst and AI Developer. Building intelligent, data-driven digital experiences." />
+  <meta name="keywords" content="Shahin Siddique, Software Engineer, Data Analyst, AI Developer, Portfolio, Computer Science, React, Python, Machine Learning" />
+  <meta name="author" content="Shahin Siddique" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Shahin Siddique | Software Engineer | Data Analyst | AI Enthusiast" />
+  <meta property="og:description" content="B.Tech Computer Science & Design graduate passionate about software development, data analytics, AI, and building practical digital products." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://shahinsiddique.dev" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Shahin Siddique | Software Engineer" />
+  <meta name="twitter:description" content="Building intelligent, data-driven and user-focused digital experiences." />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f4ff',
+              100: '#e0e9ff',
+              200: '#c7d6fe',
+              300: '#a4b8fc',
+              400: '#8193f8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+            },
+            accent: {
+              400: '#a78bfa',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Inter', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'gradient': 'gradient 8s ease infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            gradient: {
+              '0%, 100%': { backgroundPosition: '0% 50%' },
+              '50%': { backgroundPosition: '100% 50%' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-[#0a0a0f] text-gray-100 font-sans antialiased overflow-x-hidden">
+  
+  <!-- Particle Background Canvas -->
+  <canvas id="particles" class="fixed inset-0 pointer-events-none z-0"></canvas>
+  
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <!-- Logo -->
+        <a href="#home" class="flex items-center gap-2 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-display font-bold text-lg shadow-lg shadow-indigo-500/30 group-hover:shadow-indigo-500/50 transition-shadow">
+            SS
+          </div>
+          <span class="font-display font-semibold text-lg hidden sm:block">Shahin Siddique</span>
+        </a>
+        
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-1">
+          <a href="#home" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all">Home</a>
+          <a href="#about" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all">About</a>
+          <a href="#skills" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all">Skills</a>
+          <a href="#projects" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all">Projects</a>
+          <a href="#analytics" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all">Analytics</a>
+          <a href="#education" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all">Education</a>
+          <a href="#contact" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all">Contact</a>
+        </div>
+        
+        <!-- Actions -->
+        <div class="flex items-center gap-3">
+          <button id="theme-toggle" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all" aria-label="Toggle theme">
+            <i data-lucide="moon" class="w-5 h-5 theme-icon-dark"></i>
+            <i data-lucide="sun" class="w-5 h-5 theme-icon-light hidden"></i>
+          </button>
+          <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-sm font-semibold shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:scale-[1.02] transition-all">
+            Contact Me
+          </a>
+          <!-- Mobile menu button -->
+          <button id="mobile-menu-btn" class="md:hidden p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10" aria-label="Open menu">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden absolute top-full left-0 right-0 bg-[#0a0a0f]/95 backdrop-blur-xl border-b border-white/10">
+      <div class="px-4 py-4 space-y-1">
+        <a href="#home" class="mobile-nav-link block px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-white/5">Home</a>
+        <a href="#about" class="mobile-nav-link block px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-white/5">About</a>
+        <a href="#skills" class="mobile-nav-link block px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-white/5">Skills</a>
+        <a href="#projects" class="mobile-nav-link block px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-white/5">Projects</a>
+        <a href="#analytics" class="mobile-nav-link block px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-white/5">Analytics</a>
+        <a href="#education" class="mobile-nav-link block px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-white/5">Education</a>
+        <a href="#contact" class="mobile-nav-link block px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-white/5">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="relative z-10">
+    
+    <!-- ========== HERO SECTION ========== -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <!-- Gradient orbs -->
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-[120px] animate-pulse-slow"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-600/20 rounded-full blur-[100px] animate-pulse-slow" style="animation-delay: 2s;"></div>
+      
+      <div class="max-w-5xl mx-auto text-center relative">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-indigo-300 mb-8 backdrop-blur-sm animate-fade-in">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Available for opportunities
+        </div>
+        
+        <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 animate-fade-in-up">
+          <span class="bg-gradient-to-r from-white via-indigo-100 to-purple-200 bg-clip-text text-transparent">
+            Shahin Siddique
+          </span>
+        </h1>
+        
+        <p class="text-xl sm:text-2xl md:text-3xl font-medium text-indigo-300/90 mb-4 animate-fade-in-up" style="animation-delay: 0.1s;">
+          Software Engineer <span class="text-gray-500">|</span> Data Analyst <span class="text-gray-500">|</span> AI Enthusiast
+        </p>
+        
+        <p class="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s;">
+          Building intelligent, data-driven and user-focused digital experiences.
+        </p>
+        
+        <p class="text-base text-gray-500 max-w-xl mx-auto mb-12 animate-fade-in-up" style="animation-delay: 0.3s;">
+          Computer Science & Design graduate passionate about software development, data analytics, AI, and building practical digital products.
+        </p>
+        
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-4 mb-14 animate-fade-in-up" style="animation-delay: 0.4s;">
+          <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:scale-[1.03] transition-all">
+            <i data-lucide="folder-kanban" class="w-5 h-5"></i>
+            View My Projects
+          </a>
+          <a href="resume.pdf" download class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/5 border border-white/15 text-white font-semibold hover:bg-white/10 hover:border-white/25 transition-all">
+            <i data-lucide="download" class="w-5 h-5"></i>
+            Download Resume
+          </a>
+          <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/5 border border-white/15 text-white font-semibold hover:bg-white/10 hover:border-white/25 transition-all">
+            <i data-lucide="mail" class="w-5 h-5"></i>
+            Contact Me
+          </a>
+        </div>
+        
+        <!-- Social Icons -->
+        <div class="flex items-center justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.5s;">
+          <a href="https://www.linkedin.com/in/shahin-siddique-58236228" target="_blank" rel="noopener noreferrer" class="social-icon p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-indigo-500/20 hover:border-indigo-500/40 hover:text-indigo-300 transition-all" aria-label="LinkedIn">
+            <i data-lucide="linkedin" class="w-5 h-5"></i>
+          </a>
+          <a href="https://github.com/shahinsiddique49-byte" target="_blank" rel="noopener noreferrer" class="social-icon p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-indigo-500/20 hover:border-indigo-500/40 hover:text-indigo-300 transition-all" aria-label="GitHub">
+            <i data-lucide="github" class="w-5 h-5"></i>
+          </a>
+          <a href="mailto:Shahinsiddique49@gmail.com" class="social-icon p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-indigo-500/20 hover:border-indigo-500/40 hover:text-indigo-300 transition-all" aria-label="Email">
+            <i data-lucide="mail" class="w-5 h-5"></i>
+          </a>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
+          <a href="#about" class="text-gray-500 hover:text-indigo-400 transition-colors">
+            <i data-lucide="chevron-down" class="w-6 h-6"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT SECTION ========== -->
+    <section id="about" class="py-24 px-4 sm:px-6 lg:px-8 relative">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="section-title font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            About <span class="gradient-text">Me</span>
+          </h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full"></div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Text -->
+          <div class="space-y-6">
+            <p class="text-lg text-gray-300 leading-relaxed">
+              I am a Computer Science & Design graduate with a strong interest in software engineering, data analytics, artificial intelligence, and modern web development. I enjoy transforming ideas into practical applications and using technology and data to solve real-world problems.
+            </p>
+            <p class="text-gray-400 leading-relaxed">
+              As a 2025 B.Tech graduate specializing in Computer Science & Design, I bring a fresh perspective combined with hands-on project experience in building analytics dashboards, AI-powered interfaces, and responsive web applications.
+            </p>
+            
+            <div class="grid grid-cols-2 gap-4 pt-4">
+              <div class="glass-card p-4 rounded-2xl">
+                <div class="text-indigo-400 font-semibold text-sm mb-1">Education</div>
+                <div class="text-white font-medium">B.E CS & Design</div>
+                <div class="text-gray-500 text-sm">2025 Graduate</div>
+              </div>
+              <div class="glass-card p-4 rounded-2xl">
+                <div class="text-indigo-400 font-semibold text-sm mb-1">Status</div>
+                <div class="text-white font-medium">Entry-Level</div>
+                <div class="text-gray-500 text-sm">Fresher / Open to roles</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Highlights -->
+          <div class="space-y-4">
+            <div class="glass-card p-5 rounded-2xl flex items-start gap-4 hover:border-indigo-500/30 transition-colors group">
+              <div class="p-3 rounded-xl bg-indigo-500/10 text-indigo-400 group-hover:bg-indigo-500/20 transition-colors">
+                <i data-lucide="code-2" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-white mb-1">Software Engineering</h3>
+                <p class="text-sm text-gray-400">Building scalable applications and clean, maintainable code with modern frameworks.</p>
+              </div>
+            </div>
+            <div class="glass-card p-5 rounded-2xl flex items-start gap-4 hover:border-purple-500/30 transition-colors group">
+              <div class="p-3 rounded-xl bg-purple-500/10 text-purple-400 group-hover:bg-purple-500/20 transition-colors">
+                <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-white mb-1">Data Analytics</h3>
+                <p class="text-sm text-gray-400">Turning raw data into actionable insights through SQL, visualization and dashboards.</p>
+              </div>
+            </div>
+            <div class="glass-card p-5 rounded-2xl flex items-start gap-4 hover:border-violet-500/30 transition-colors group">
+              <div class="p-3 rounded-xl bg-violet-500/10 text-violet-400 group-hover:bg-violet-500/20 transition-colors">
+                <i data-lucide="brain" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-white mb-1">AI / Machine Learning</h3>
+                <p class="text-sm text-gray-400">Exploring AI applications, recommendation systems and data-driven intelligent products.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SKILLS SECTION ========== -->
+    <section id="skills" class="py-24 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="section-title font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            Skills & <span class="gradient-text">Technologies</span>
+          </h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full"></div>
+          <p class="mt-4 text-gray-400 max-w-xl mx-auto">Technologies and tools I work with to build software, analyze data, and explore AI.</p>
+        </div>
+        
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Programming -->
+          <div class="glass-card p-6 rounded-2xl skill-card">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="p-2.5 rounded-xl bg-indigo-500/15 text-indigo-400">
+                <i data-lucide="terminal" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-semibold text-lg">Programming</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-badge">Python</span>
+              <span class="skill-badge">Java</span>
+              <span class="skill-badge">JavaScript</span>
+              <span class="skill-badge">HTML</span>
+              <span class="skill-badge">CSS</span>
+            </div>
+          </div>
+          
+          <!-- Data & Analytics -->
+          <div class="glass-card p-6 rounded-2xl skill-card">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="p-2.5 rounded-xl bg-emerald-500/15 text-emerald-400">
+                <i data-lucide="database" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-semibold text-lg">Data & Analytics</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-badge">SQL</span>
+              <span class="skill-badge">Excel</span>
+              <span class="skill-badge">Power BI</span>
+              <span class="skill-badge">Data Visualization</span>
+              <span class="skill-badge">Data Analysis</span>
+            </div>
+          </div>
+          
+          <!-- AI / ML -->
+          <div class="glass-card p-6 rounded-2xl skill-card">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="p-2.5 rounded-xl bg-purple-500/15 text-purple-400">
+                <i data-lucide="cpu" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-semibold text-lg">AI / ML</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-badge">Machine Learning</span>
+              <span class="skill-badge">AI Applications</span>
+              <span class="skill-badge">Image Classification</span>
+              <span class="skill-badge">Data-driven Systems</span>
+            </div>
+          </div>
+          
+          <!-- Development -->
+          <div class="glass-card p-6 rounded-2xl skill-card">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="p-2.5 rounded-xl bg-cyan-500/15 text-cyan-400">
+                <i data-lucide="layers" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-semibold text-lg">Development</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-badge">React</span>
+              <span class="skill-badge">Node.js</span>
+              <span class="skill-badge">MySQL</span>
+              <span class="skill-badge">REST APIs</span>
+              <span class="skill-badge">Git/GitHub</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROJECTS SECTION ========== -->
+    <section id="projects" class="py-24 px-4 sm:px-6 lg:px-8 relative">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="section-title font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            Featured <span class="gradient-text">Projects</span>
+          </h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full"></div>
+          <p class="mt-4 text-gray-400 max-w-xl mx-auto">Selected work showcasing analytics dashboards, AI interfaces, and responsive web applications.</p>
+        </div>
+        
+        <!-- Project Filter -->
+        <div class="flex flex-wrap justify-center gap-2 mb-12">
+          <button class="filter-btn active px-4 py-2 rounded-xl text-sm font-medium bg-indigo-500/20 text-indigo-300 border border-indigo-500/30" data-filter="all">All</button>
+          <button class="filter-btn px-4 py-2 rounded-xl text-sm font-medium bg-white/5 text-gray-400 border border-white/10 hover:bg-white/10" data-filter="analytics">Analytics</button>
+          <button class="filter-btn px-4 py-2 rounded-xl text-sm font-medium bg-white/5 text-gray-400 border border-white/10 hover:bg-white/10" data-filter="ai">AI</button>
+          <button class="filter-btn px-4 py-2 rounded-xl text-sm font-medium bg-white/5 text-gray-400 border border-white/10 hover:bg-white/10" data-filter="web">Web</button>
+        </div>
+        
+        <div class="space-y-10" id="projects-grid">
+          
+          <!-- PROJECT 1: RetailPulse -->
+          <article class="project-card glass-card rounded-3xl overflow-hidden group" data-category="analytics">
+            <div class="grid lg:grid-cols-5 gap-0">
+              <div class="lg:col-span-2 relative min-h-[240px] lg:min-h-full bg-gradient-to-br from-indigo-900/60 via-purple-900/40 to-slate-900 flex items-center justify-center p-8">
+                <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM2MzY2ZjEiIGZpbGwtb3BhY2l0eT0iMC4wOCI+PHBhdGggZD0iTTM2IDM0djItaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6bTAgNHYyaDJ2LTJoLTJ6bTAtNHYyaDJ2LTJoLTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-50"></div>
+                <div class="relative text-center">
+                  <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-2xl shadow-indigo-500/40">
+                    <i data-lucide="line-chart" class="w-10 h-10 text-white"></i>
+                  </div>
+                  <h3 class="font-display text-2xl font-bold text-white">RetailPulse</h3>
+                  <p class="text-indigo-300 text-sm mt-1">Analytics Dashboard</p>
+                </div>
+              </div>
+              <div class="lg:col-span-3 p-6 sm:p-8 flex flex-col">
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-indigo-500/15 text-indigo-300 border border-indigo-500/20">HTML</span>
+                  <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-indigo-500/15 text-indigo-300 border border-indigo-500/20">CSS</span>
+                  <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-indigo-500/15 text-indigo-300 border border-indigo-500/20">JavaScript</span>
+                  <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-emerald-500/15 text-emerald-300 border border-emerald-500/20">Data Analytics</span>
+                </div>
+                <h3 class="font-display text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-indigo-300 transition-colors">
+                  RetailPulse — E-Commerce Business & Customer Analytics
+                </h3>
+                <p class="text-gray-400 mb-5 leading-relaxed">
+                  An interactive analytics dashboard designed to help e-commerce businesses understand revenue, customers, products, conversion funnels, and operational performance.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">Revenue analytics</span>
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">Customer segmentation</span>
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">CLV</span>
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">Product performance</span>
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">Sales channels</span>
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">Purchase funnel</span>
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">Conversion analysis</span>
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">AI insights</span>
+                </div>
+                <div class="mt-auto flex flex-wrap gap-3">
+                  <a href="projects/retailpulse.html" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-sm font-medium hover:bg-indigo-500/30 transition-all">
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                    Live Demo
+                  </a>
+                  <a href="https://github.com/shahinsiddique49-byte/web-application" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 text-gray-300 border border-white/10 text-sm font-medium hover:bg-white/10 transition-all">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          
+          <!-- PROJECT 2: Aether -->
+          <article class="project-card glass-card rounded-3xl overflow-hidden group" data-category="ai">
+            <div class="grid lg:grid-cols-5 gap-0">
+              <div class="lg:col-span-2 relative min-h-[240px] lg:min-h-full bg-gradient-to-br from-violet-900/60 via-fuchsia-900/40 to-slate-900 flex items-center justify-center p-8 order-1 lg:order-none">
+                <div class="absolute inset-0 opacity-40" style="background-image: radial-gradient(circle at 30% 40%, rgba(139,92,246,0.3), transparent 50%), radial-gradient(circle at 70% 60%, rgba(217,70,239,0.2), transparent 50%);"></div>
+                <div class="relative text-center">
+                  <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center shadow-2xl shadow-violet-500/40">
+                    <i data-lucide="sparkles" class="w-10 h-10 text-white"></i>
+                  </div>
+                  <h3 class="font-display text-2xl font-bold text-white">Aether</h3>
+                  <p class="text-violet-300 text-sm mt-1">AI Shopping Assistant</p>
+                </div>
+              </div>
+              <div class="lg:col-span-3 p-6 sm:p-8 flex flex-col">
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-violet-500/15 text-violet-300 border border-violet-500/20">HTML</span>
+                  <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-violet-500/15 text-violet-300 border border-violet-500/20">CSS</span>
+                  <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-violet-500/15 text-violet-300 border border-violet-500/20">JavaScript</span>
+                  <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-fuchsia-500/15 text-fuchsia-300 border border-fuchsia-500/20">AI / Recommendations</span>
+                </div>
+                <h3 class="font-display text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-violet-300 transition-colors">
+                  Aether — AI Shopping Assistant
+                </h3>
+                <p class="text-gray-400 mb-5 leading-relaxed">
+                  An AI-powered shopping experience that helps users discover products using natural-language search and AI-assisted recommendations.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">AI shopping assistant</span>
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">Product search</span>
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">Smart recommendations</span>
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">Product filtering</span>
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">Shopping cart</span>
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">Ratings & Deals</span>
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">Mobile-friendly</span>
+                </div>
+                <div class="mt-auto flex flex-wrap gap-3">
+                  <a href="projects/aether.html" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-violet-500/20 text-violet-300 border border-violet-500/30 text-sm font-medium hover:bg-violet-500/30 transition-all">
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                    Live Demo
+                  </a>
+                  <a href="https://github.com/shahinsiddique49-byte/web-application" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 text-gray-300 border border-white/10 text-sm font-medium hover:bg-white/10 transition-all">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          
+          <!-- PROJECT 3: Biriyani Lover -->
+          <article class="project-card glass-card rounded-3xl overflow-hidden group" data-category="web">
+            <div class="grid lg:grid-cols-5 gap-0">
+              <div class="lg:col-span-2 relative min-h-[240px] lg:min-h-full bg-gradient-to-br from-amber-900/50 via-orange-900/40 to-slate-900 flex items-center justify-center p-8">
+                <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle at 40% 50%, rgba(245,158,11,0.25), transparent 55%);"></div>
+                <div class="relative text-center">
+                  <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center shadow-2xl shadow-amber-500/40">
+                    <i data-lucide="utensils" class="w-10 h-10 text-white"></i>
+                  </div>
+                  <h3 class="font-display text-2xl font-bold text-white">Biriyani Lover</h3>
+                  <p class="text-amber-300 text-sm mt-1">Restaurant Website</p>
+                </div>
+              </div>
+              <div class="lg:col-span-3 p-6 sm:p-8 flex flex-col">
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-amber-500/15 text-amber-300 border border-amber-500/20">HTML</span>
+                  <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-amber-500/15 text-amber-300 border border-amber-500/20">CSS</span>
+                  <span class="px-2.5 py-1 rounded-lg text-xs font-medium bg-amber-500/15 text-amber-300 border border-amber-500/20">JavaScript</span>
+                </div>
+                <h3 class="font-display text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-amber-300 transition-colors">
+                  Biriyani Lover — Restaurant Website
+                </h3>
+                <p class="text-gray-400 mb-5 leading-relaxed">
+                  A responsive restaurant website showcasing an attractive food menu, restaurant information, and contact experience.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">Responsive navigation</span>
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">Hero section</span>
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">Restaurant menu</span>
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">Food cards</span>
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">Pricing</span>
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">About & Contact</span>
+                  <span class="text-xs text-gray-500 bg-white/5 px-2.5 py-1 rounded-md">Smooth animations</span>
+                </div>
+                <div class="mt-auto flex flex-wrap gap-3">
+                  <a href="projects/biriyani-lover.html" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/30 text-sm font-medium hover:bg-amber-500/30 transition-all">
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                    Live Demo
+                  </a>
+                  <a href="https://github.com/shahinsiddique49-byte/web-application" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 text-gray-300 border border-white/10 text-sm font-medium hover:bg-white/10 transition-all">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== DATA ANALYTICS SECTION ========== -->
+    <section id="analytics" class="py-24 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-b from-transparent via-purple-950/15 to-transparent">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="section-title font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            Turning Data Into <span class="gradient-text">Insights</span>
+          </h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full"></div>
+          <p class="mt-4 text-gray-400 max-w-xl mx-auto">A structured approach to transforming raw data into meaningful business decisions.</p>
+        </div>
+        
+        <!-- Workflow -->
+        <div class="relative mb-16">
+          <div class="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-indigo-500/50 via-purple-500/50 to-emerald-500/50 -translate-y-1/2 z-0"></div>
+          <div class="grid grid-cols-2 md:grid-cols-6 gap-4 relative z-10">
+            <div class="workflow-step text-center">
+              <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-slate-800 border border-white/10 flex items-center justify-center text-indigo-400 shadow-lg">
+                <i data-lucide="file-spreadsheet" class="w-6 h-6"></i>
+              </div>
+              <div class="text-sm font-medium text-white">Raw Data</div>
+            </div>
+            <div class="workflow-step text-center">
+              <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-slate-800 border border-white/10 flex items-center justify-center text-indigo-400 shadow-lg">
+                <i data-lucide="database" class="w-6 h-6"></i>
+              </div>
+              <div class="text-sm font-medium text-white">SQL</div>
+            </div>
+            <div class="workflow-step text-center">
+              <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-slate-800 border border-white/10 flex items-center justify-center text-purple-400 shadow-lg">
+                <i data-lucide="code" class="w-6 h-6"></i>
+              </div>
+              <div class="text-sm font-medium text-white">Python / Excel</div>
+            </div>
+            <div class="workflow-step text-center">
+              <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-slate-800 border border-white/10 flex items-center justify-center text-purple-400 shadow-lg">
+                <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
+              </div>
+              <div class="text-sm font-medium text-white">Power BI</div>
+            </div>
+            <div class="workflow-step text-center">
+              <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-slate-800 border border-white/10 flex items-center justify-center text-emerald-400 shadow-lg">
+                <i data-lucide="lightbulb" class="w-6 h-6"></i>
+              </div>
+              <div class="text-sm font-medium text-white">Insights</div>
+            </div>
+            <div class="workflow-step text-center">
+              <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-slate-800 border border-white/10 flex items-center justify-center text-emerald-400 shadow-lg">
+                <i data-lucide="target" class="w-6 h-6"></i>
+              </div>
+              <div class="text-sm font-medium text-white">Decisions</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Capabilities -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div class="glass-card p-5 rounded-2xl flex items-start gap-4">
+            <div class="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 shrink-0">
+              <i data-lucide="search" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-white mb-1">SQL Querying</h4>
+              <p class="text-sm text-gray-400">Extracting and joining data from relational databases efficiently.</p>
+            </div>
+          </div>
+          <div class="glass-card p-5 rounded-2xl flex items-start gap-4">
+            <div class="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 shrink-0">
+              <i data-lucide="filter" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-white mb-1">Data Cleaning</h4>
+              <p class="text-sm text-gray-400">Preparing datasets for analysis by handling missing and inconsistent values.</p>
+            </div>
+          </div>
+          <div class="glass-card p-5 rounded-2xl flex items-start gap-4">
+            <div class="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 shrink-0">
+              <i data-lucide="chart-scatter" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-white mb-1">Exploratory Analysis</h4>
+              <p class="text-sm text-gray-400">Discovering patterns, trends and relationships in data.</p>
+            </div>
+          </div>
+          <div class="glass-card p-5 rounded-2xl flex items-start gap-4">
+            <div class="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 shrink-0">
+              <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-white mb-1">Dashboard Creation</h4>
+              <p class="text-sm text-gray-400">Building interactive dashboards for stakeholders and decision makers.</p>
+            </div>
+          </div>
+          <div class="glass-card p-5 rounded-2xl flex items-start gap-4">
+            <div class="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 shrink-0">
+              <i data-lucide="pie-chart" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-white mb-1">Data Visualization</h4>
+              <p class="text-sm text-gray-400">Communicating insights clearly through charts and visual storytelling.</p>
+            </div>
+          </div>
+          <div class="glass-card p-5 rounded-2xl flex items-start gap-4">
+            <div class="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 shrink-0">
+              <i data-lucide="briefcase" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-white mb-1">Business Insights</h4>
+              <p class="text-sm text-gray-400">Translating analytical findings into actionable recommendations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== EDUCATION SECTION ========== -->
+    <section id="education" class="py-24 px-4 sm:px-6 lg:px-8 relative">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="section-title font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            <span class="gradient-text">Education</span>
+          </h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full"></div>
+        </div>
+        
+        <div class="relative">
+          <!-- Timeline line -->
+          <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-indigo-500 via-purple-500 to-transparent md:-translate-x-px"></div>
+          
+          <!-- Timeline item -->
+          <div class="relative pl-16 md:pl-0 md:grid md:grid-cols-2 md:gap-8 mb-8">
+            <div class="md:text-right md:pr-12">
+              <div class="glass-card p-6 rounded-2xl inline-block text-left md:text-right w-full md:w-auto">
+                <div class="text-indigo-400 text-sm font-medium mb-1">2021 — 2025</div>
+                <h3 class="font-display text-xl font-bold text-white mb-1">B.E — Computer Science & Design</h3>
+                <p class="text-gray-400">Erode Sengunthar Engineering College (Autonomous)</p>
+                <p class="text-sm text-gray-500 mt-2">Graduated: 2025 · CGPA: 7.5</p>
+              </div>
+            </div>
+            <!-- Dot -->
+            <div class="absolute left-4 md:left-1/2 top-6 w-4 h-4 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 border-4 border-[#0a0a0f] shadow-lg shadow-indigo-500/50 md:-translate-x-1/2"></div>
+            <div class="hidden md:block"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== RESUME SECTION ========== -->
+    <section id="resume" class="py-24 px-4 sm:px-6 lg:px-8 relative">
+      <div class="max-w-3xl mx-auto">
+        <div class="glass-card rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/10 via-transparent to-purple-600/10 pointer-events-none"></div>
+          <div class="relative">
+            <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-xl shadow-indigo-500/30">
+              <i data-lucide="file-text" class="w-8 h-8 text-white"></i>
+            </div>
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-white mb-3">
+              Interested in working together?
+            </h2>
+            <p class="text-gray-400 mb-8 max-w-md mx-auto">
+              Download my resume to learn more about my education, technical skills, projects and career interests.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+              <a href="resume.pdf" download class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:scale-[1.02] transition-all">
+                <i data-lucide="download" class="w-5 h-5"></i>
+                Download Resume
+              </a>
+              <a href="resume.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/5 border border-white/15 text-white font-semibold hover:bg-white/10 transition-all">
+                <i data-lucide="eye" class="w-5 h-5"></i>
+                View Resume
+              </a>
+            </div>
+            <p class="text-xs text-gray-600 mt-6"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== GITHUB / LINKEDIN SECTION ========== -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto grid sm:grid-cols-2 gap-6">
+        <a href="https://github.com/shahinsiddique49-byte" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-2xl flex items-center gap-5 group hover:border-indigo-500/40 transition-all">
+          <div class="p-4 rounded-2xl bg-white/5 group-hover:bg-indigo-500/15 transition-colors">
+            <i data-lucide="github" class="w-8 h-8 text-gray-300 group-hover:text-indigo-300 transition-colors"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold text-lg text-white mb-1">GitHub</h3>
+            <p class="text-sm text-gray-400">Explore my code and projects</p>
+          </div>
+          <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-600 ml-auto group-hover:text-indigo-400 transition-colors"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/shahin-siddique-58236228" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-2xl flex items-center gap-5 group hover:border-blue-500/40 transition-all">
+          <div class="p-4 rounded-2xl bg-white/5 group-hover:bg-blue-500/15 transition-colors">
+            <i data-lucide="linkedin" class="w-8 h-8 text-gray-300 group-hover:text-blue-400 transition-colors"></i>
+          </div>
+          <div>
+            <h3 class="font-semibold text-lg text-white mb-1">LinkedIn</h3>
+            <p class="text-sm text-gray-400">Connect with me professionally</p>
+          </div>
+          <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-600 ml-auto group-hover:text-blue-400 transition-colors"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT SECTION ========== -->
+    <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8 relative">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="section-title font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            Get In <span class="gradient-text">Touch</span>
+          </h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full"></div>
+          <p class="mt-4 text-gray-400 max-w-xl mx-auto">Have a role, project, or opportunity in mind? Let's talk.</p>
+        </div>
+        
+        <div class="grid lg:grid-cols-5 gap-10">
+          <!-- Contact info -->
+          <div class="lg:col-span-2 space-y-6">
+            <div class="glass-card p-5 rounded-2xl flex items-center gap-4">
+              <div class="p-3 rounded-xl bg-indigo-500/10 text-indigo-400">
+                <i data-lucide="mail" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="text-sm text-gray-500">Email</div>
+                <a href="mailto:Shahinsiddique49@gmail.com" class="text-white hover:text-indigo-300 transition-colors">Shahinsiddique49@gmail.com</a>
+              </div>
+            </div>
+            <div class="glass-card p-5 rounded-2xl flex items-center gap-4">
+              <div class="p-3 rounded-xl bg-blue-500/10 text-blue-400">
+                <i data-lucide="linkedin" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="text-sm text-gray-500">LinkedIn</div>
+                <a href="https://www.linkedin.com/in/shahin-siddique-58236228" target="_blank" rel="noopener" class="text-white hover:text-blue-300 transition-colors">linkedin.com/in/shahin-siddique-58236228</a>
+              </div>
+            </div>
+            <div class="glass-card p-5 rounded-2xl flex items-center gap-4">
+              <div class="p-3 rounded-xl bg-gray-500/10 text-gray-300">
+                <i data-lucide="github" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="text-sm text-gray-500">GitHub</div>
+                <a href="https://github.com/shahinsiddique49-byte" target="_blank" rel="noopener" class="text-white hover:text-gray-200 transition-colors">github.com/shahinsiddique49-byte</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Contact form -->
+          <div class="lg:col-span-3">
+            <form id="contact-form" class="glass-card p-6 sm:p-8 rounded-3xl space-y-5">
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="name" class="block text-sm font-medium text-gray-400 mb-2">Name</label>
+                  <input type="text" id="name" name="name" required placeholder="Your name"
+                    class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/30 transition-all" />
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-medium text-gray-400 mb-2">Email</label>
+                  <input type="email" id="email" name="email" required placeholder="you@example.com"
+                    class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/30 transition-all" />
+                </div>
+              </div>
+              <div>
+                <label for="subject" class="block text-sm font-medium text-gray-400 mb-2">Subject</label>
+                <input type="text" id="subject" name="subject" required placeholder="What's this about?"
+                  class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/30 transition-all" />
+              </div>
+              <div>
+                <label for="message" class="block text-sm font-medium text-gray-400 mb-2">Message</label>
+                <textarea id="message" name="message" rows="5" required placeholder="Tell me about the opportunity or project..."
+                  class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/30 transition-all resize-none"></textarea>
+              </div>
+              <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:scale-[1.02] transition-all">
+                <i data-lucide="send" class="w-5 h-5"></i>
+                Send Message
+              </button>
+              <p id="form-status" class="text-sm hidden"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="relative z-10 border-t border-white/5 py-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      <p class="text-sm text-gray-500 text-center sm:text-left">
+        © 2026 Shahin Siddique. Built with passion, technology and continuous learning.
+      </p>
+      <div class="flex items-center gap-4">
+        <a href="https://www.linkedin.com/in/shahin-siddique-58236228" target="_blank" rel="noopener" class="text-gray-500 hover:text-indigo-400 transition-colors" aria-label="LinkedIn">
+          <i data-lucide="linkedin" class="w-5 h-5"></i>
+        </a>
+        <a href="https://github.com/shahinsiddique49-byte" target="_blank" rel="noopener" class="text-gray-500 hover:text-indigo-400 transition-colors" aria-label="GitHub">
+          <i data-lucide="github" class="w-5 h-5"></i>
+        </a>
+        <a href="mailto:Shahinsiddique49@gmail.com" class="text-gray-500 hover:text-indigo-400 transition-colors" aria-label="Email">
+          <i data-lucide="mail" class="w-5 h-5"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button id="scroll-top" class="fixed bottom-6 right-6 z-50 p-3 rounded-xl bg-indigo-500/90 text-white shadow-lg shadow-indigo-500/30 opacity-0 pointer-events-none transition-all hover:bg-indigo-500 hover:scale-110" aria-label="Scroll to top">
+    <i data-lucide="arrow-up" class="w-5 h-5"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
